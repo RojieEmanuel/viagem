@@ -3,31 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Planejador de Viagem</title>
+    <title>Meu Planejador Pro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="container">
         <header>
-            <h1>✈️ Planejador de Destinos</h1>
+            <h1>✈️ Planejador de Viagem</h1>
+            <button id="btnAbrirForm" onclick="toggleForm()">+ Adicionar Novo Destino</button>
         </header>
 
-        <section class="card">
-            <h2>Adicionar Novo Destino</h2>
+        <section id="areaFormulario" class="card hidden">
+            <h2>Novo Destino</h2>
             <div class="form-group">
-                <input type="text" id="inputDestino" placeholder="Ex: Jardim Botânico">
+                <input type="text" id="inputCidade" placeholder="Cidade (Ex: Curitiba)">
+                <input type="text" id="inputDestino" placeholder="Local (Ex: Ópera de Arame)">
                 <input type="number" id="inputPreco" placeholder="Preço (R$)">
-                <button onclick="adicionarDestino()" class="btn-add">Adicionar</button>
+                <div class="botoes-form">
+                    <button onclick="adicionarDestino()" class="btn-add">Salvar</button>
+                    <button onclick="toggleForm()" class="btn-cancel">Cancelar</button>
+                </div>
             </div>
         </section>
 
-        <section id="listaDestinos">
-            </section>
+        <div id="listaCidades"></div>
     </main>
 
     <script src="script.js"></script>
 </body>
-</html>
-</body>
-
 </html>
