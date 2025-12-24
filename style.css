@@ -15,6 +15,12 @@ body {
     justify-content: center;
     padding: 40px 20px;
     margin: 0;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                      url('https://images.unsplash.com/photo-1626078299034-909f3b3337f7?q=80&w=2000'); /* Exemplo: Jardim Botânico */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* A imagem fica parada enquanto você rola */
 }
 
 .container {
