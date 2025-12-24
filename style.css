@@ -8,19 +8,16 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    padding: 40px 20px;
-    margin: 0;
-
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                      url('images.jpeg'); /* Exemplo: Jardim Botânico */
+   margin: 0;
+    padding: 0;
+    /* Teste primeiro sem o gradiente para ver se a imagem aparece */
+    background-image: url('images.jpeg'); 
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* A imagem fica parada enquanto você rola */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
 }
 
 .container {
@@ -178,5 +175,6 @@ input {
     padding: 15px;
     border-radius: 10px;
 }
+
 
 
