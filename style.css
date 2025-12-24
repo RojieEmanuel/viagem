@@ -8,8 +8,15 @@
 }
 
 body {
-   margin: 0;
-    padding: 0;
+
+    margin: 0;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh
+
     /* Teste primeiro sem o gradiente para ver se a imagem aparece */
     background-image: url('images.jpeg'); 
     background-size: cover;
@@ -95,6 +102,7 @@ input {
     border: 1px solid #ccc;
     font-size: 1rem;
 }
+
 
 
 
