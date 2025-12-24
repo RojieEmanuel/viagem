@@ -4,72 +4,87 @@
     --primary-color: #4a90e2;
     --bg-color: #f4f7f6;
     --text-color: #2c3e50;
-    --card-bg: #ffffff;
+    --card-bg: #F5F5F5;
 }
 
 body {
-    margin: 0;
-    padding: 40px 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-
-    /* Ajuste de Zoom: 'contain' mostra a foto inteira, '100% 100%' estica. 
-       O ideal para diminuir o zoom sem sobrar branco é usar 'background-size: 110%' ou similar. */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images.jfif');
-    background-size: 120%; /* Diminui o zoom (quanto menor o %, menor o zoom) */
-    background-position: center top; /* Foca no topo da imagem postal */
-    background-attachment: fixed;
+   margin: 0;
+    padding: 0;
+    /* Teste primeiro sem o gradiente para ver se a imagem aparece */
+    background-image: url('images.jpeg'); 
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 h1 {
-    color: #ffffff;
-    text-align: center;
-    /* Sombra forte no texto para destacar do fundo claro */
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
-    font-size: 2.5rem;
-    margin-bottom: 40px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 5px;
 }
 
 .card {
-    /* Fundo branco com mais opacidade para garantir leitura */
-    background: rgba(255, 255, 255, 0.92); 
-    backdrop-filter: blur(12px); /* Efeito de vidro */
-    border-radius: 20px;
-    padding: 30px;
-    margin-bottom: 25px;
-    max-width: 450px;
-    width: 100%;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+/* Efeito quando o mouse passa por cima do card */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-    color: #1a5fb4; /* Azul forte para contraste */
+    font-size: 1.2rem;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 15px;
     margin-top: 0;
-    font-size: 1.5rem;
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
 }
 
 li {
-    color: #222; /* Fonte quase preta para leitura máxima */
     padding: 10px 0;
-    font-weight: 600;
-    list-style: none;
+    border-bottom: 1px solid #eee;
+    color: #555;
+    display: flex;
+    align-items: center;
 }
 
+/* Adiciona um checkmark antes de cada item */
 li::before {
-    content: "📍 ";
+    content: "✓";
+    margin-right: 10px;
+    color: var(--primary-color);
+    font-weight: bold;
 }
 
 li:last-child {
     border-bottom: none;
 }
-/* ... (mantenha o que já fizemos e adicione abaixo) */
+p{
+    color: #4a90e5;
+}
 
 .form-group {
     display: flex;
@@ -83,86 +98,5 @@ input {
     border: 1px solid #ccc;
     font-size: 1rem;
 }
-
-.btn-add {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.btn-delete {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-.item-destino {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-/* ... (mantenha o base que já temos) */
-
-.hidden {
-    display: none;
-}
-
-#btnAbrirForm {
-    background: #4a90e2;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-bottom: 20px;
-    transition: 0.3s;
-}
-
-#btnAbrirForm:hover { background: #357abd; }
-
-.btn-cancel {
-    background: #6c757d;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.cidade-group {
-    margin-bottom: 30px;
-}
-
-.cidade-titulo {
-    color: #fff;
-    background: rgba(0, 0, 0, 0.6);
-    display: inline-block;
-    padding: 5px 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-}
-
-.item-destino {
-    display: flex;
-    justify-content: space-between;
-    background: rgba(255, 255, 255, 0.9);
-    margin-bottom: 8px;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-
 
 
