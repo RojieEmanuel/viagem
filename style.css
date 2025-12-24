@@ -7,16 +7,9 @@
     --card-bg: #F5F5F5;
 }
 
-body {
-
-    margin: 0;
-    padding: 40px 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh
-
+ body{
+   margin: 0;
+    padding: 0;
     /* Teste primeiro sem o gradiente para ver se a imagem aparece */
     background-image: url('images.jpeg'); 
     background-size: cover;
@@ -89,6 +82,9 @@ li::before {
 li:last-child {
     border-bottom: none;
 }
+p{
+    color: #4a90e5;
+}
 
 .form-group {
     display: flex;
@@ -102,7 +98,3 @@ input {
     border: 1px solid #ccc;
     font-size: 1rem;
 }
-
-
-
-
