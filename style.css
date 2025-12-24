@@ -8,75 +8,62 @@
 }
 
 body {
-   margin: 0;
-    padding: 0;
-    /* Teste primeiro sem o gradiente para ver se a imagem aparece */
-    background-image: url('images.jpeg'); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    margin: 0;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+
+    /* Ajuste de Zoom: 'contain' mostra a foto inteira, '100% 100%' estica. 
+       O ideal para diminuir o zoom sem sobrar branco é usar 'background-size: 110%' ou similar. */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images.jfif');
+    background-size: 120%; /* Diminui o zoom (quanto menor o %, menor o zoom) */
+    background-position: center top; /* Foca no topo da imagem postal */
     background-attachment: fixed;
-    height: 100vh;
-    width: 100%;
-}
-
-.container {
-    max-width: 600px;
-    width: 100%;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 30px;
+    background-repeat: no-repeat;
 }
 
 h1 {
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 5px;
+    color: #ffffff;
+    text-align: center;
+    /* Sombra forte no texto para destacar do fundo claro */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    font-size: 2.5rem;
+    margin-bottom: 40px;
 }
 
 .card {
-    background: var(--card-bg);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease;
-}
-
-/* Efeito quando o mouse passa por cima do card */
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    /* Fundo branco com mais opacidade para garantir leitura */
+    background: rgba(255, 255, 255, 0.92); 
+    backdrop-filter: blur(12px); /* Efeito de vidro */
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 25px;
+    max-width: 450px;
+    width: 100%;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 h2 {
-    font-size: 1.2rem;
-    border-left: 4px solid var(--primary-color);
-    padding-left: 15px;
+    color: #1a5fb4; /* Azul forte para contraste */
     margin-top: 0;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
 }
 
 li {
+    color: #222; /* Fonte quase preta para leitura máxima */
     padding: 10px 0;
-    border-bottom: 1px solid #eee;
-    color: #555;
-    display: flex;
-    align-items: center;
+    font-weight: 600;
+    list-style: none;
 }
 
-/* Adiciona um checkmark antes de cada item */
 li::before {
-    content: "✓";
-    margin-right: 10px;
-    color: var(--primary-color);
-    font-weight: bold;
+    content: "📍 ";
 }
 
 li:last-child {
@@ -175,6 +162,7 @@ input {
     padding: 15px;
     border-radius: 10px;
 }
+
 
 
 
