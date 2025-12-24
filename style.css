@@ -17,7 +17,7 @@ body {
     margin: 0;
 
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                      url('images.jfif'); /* Exemplo: Jardim Botânico */
+                      url('images.jpeg'); /* Exemplo: Jardim Botânico */
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* A imagem fica parada enquanto você rola */
@@ -178,4 +178,5 @@ input {
     padding: 15px;
     border-radius: 10px;
 }
+
 
