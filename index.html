@@ -3,32 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Planejador Pro</title>
+    <title>Viagem para o Paraná</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="container">
         <header>
-            <h1>✈️ Planejador de Viagem</h1>
-            <button id="btnAbrirForm" onclick="toggleForm()">+ Adicionar Novo Destino</button>
+            <h1>📍 Roteiro de Viagem para Curitiba</h1>
+            <p>Lugares para Rojie e Evilin</p>
         </header>
 
-        <section id="areaFormulario" class="card hidden">
-            <h2>Novo Destino</h2>
-            <div class="form-group">
-                <input type="text" id="inputCidade" placeholder="Cidade (Ex: Curitiba)">
-                <input type="text" id="inputDestino" placeholder="Local (Ex: Ópera de Arame)">
-                <input type="number" id="inputPreco" placeholder="Preço (R$)">
-                <div class="botoes-form">
-                    <button onclick="adicionarDestino()" class="btn-add">Salvar</button>
-                    <button onclick="toggleForm()" class="btn-cancel">Cancelar</button>
-                </div>
-            </div>
+        <section class="card">
+            <h2>Curitiba</h2>
+            <ul>
+                <li>Parque Tanguá</li>
+                <li>Ópera de Arame</li>
+                <li>Bosque Alemão</li>
+                <li>Trem para Morretes</li>
+            </ul>
         </section>
 
-        <div id="listaCidades"></div>
-    </main>
+        <section class="card">
+            <h2>Fazenda Rio Grande</h2>
+            <ul>
+                <li>Parque Chimanski</li>
+            </ul>
+        </section>
 
-    <script src="script.js"></script>
+        <section class="card">
+            <h2>São José dos Pinhais</h2>
+            <ul>
+                <li>Jardim das Sensações</li>
+                <li>Zoológico Municipal</li>
+            </ul>
+        </section>
+    </main>
 </body>
 </html>
