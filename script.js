@@ -1,64 +1,90 @@
+// 1. Carrega os dados salvos ou inicia um array vazio
 let destinos = JSON.parse(localStorage.getItem('meusDestinos')) || [];
 
+// 2. Função para mostrar/esconder o formulário
 function toggleForm() {
     const form = document.getElementById('areaFormulario');
-    form.classList.toggle('hidden');
+    if (form.classList.contains('hidden')) {
+        form.classList.remove('hidden');
+    } else {
+        form.classList.add('hidden');
+    }
 }
 
+// 3. Função para adicionar o destino
 function adicionarDestino() {
-    const cidade = document.getElementById('inputCidade').value;
-    const nome = document.getElementById('inputDestino').value;
-    const preco = document.getElementById('inputPreco').value;
+    const cidadeInput = document.getElementById('inputCidade');
+    const destinoInput = document.getElementById('inputDestino');
+    const precoInput = document.getElementById('inputPreco');
 
-    if (cidade && nome && preco) {
-        destinos.push({ cidade, nome, preco });
-        localStorage.setItem('meusDestinos', JSON.stringify(destinos));
-        
-        // Limpa e fecha
-        document.getElementById('inputCidade').value = '';
-        document.getElementById('inputDestino').value = '';
-        document.getElementById('inputPreco').value = '';
-        toggleForm();
-        renderizarLista();
-    } else {
-        alert("Mano, preenche todos os campos, inclusive a cidade!");
+    const cidade = cidadeInput.value.trim();
+    const nome = destinoInput.value.trim();
+    const preco = precoInput.value.trim();
+
+    // Verificação de segurança (checagem de informação)
+    if (cidade === "" || nome === "" || preco === "") {
+        alert("Aí não, mano! Preenche todos os campos antes de salvar.");
+        return;
     }
+
+    // Adiciona ao array
+    destinos.push({
+        cidade: cidade,
+        nome: nome,
+        preco: parseFloat(preco).toFixed(2)
+    });
+
+    // Salva e atualiza a tela
+    salvarEAtualizar();
+
+    // Limpa os campos e esconde o form
+    cidadeInput.value = "";
+    destinoInput.value = "";
+    precoInput.value = "";
+    toggleForm();
+}
+
+// 4. Função para deletar
+function deletarDestino(index) {
+    destinos.splice(index, 1);
+    salvarEAtualizar();
+}
+
+// 5. Salva no navegador e redesenha a lista
+function salvarEAtualizar() {
+    localStorage.setItem('meusDestinos', JSON.stringify(destinos));
+    renderizarLista();
 }
 
 function renderizarLista() {
     const container = document.getElementById('listaCidades');
     container.innerHTML = '';
 
-    // Agrupando destinos por cidade
-    const agrupadoPorCidade = destinos.reduce((acc, item) => {
-        if (!acc[item.cidade]) {
-            acc[item.cidade] = [];
-        }
+    // Agrupamento por cidade
+    const agrupado = destinos.reduce((acc, item) => {
+        if (!acc[item.cidade]) acc[item.cidade] = [];
         acc[item.cidade].push(item);
         return acc;
     }, {});
 
-    // Criando o HTML para cada cidade
-    for (let cidade in agrupadoPorCidade) {
-        let htmlCidade = `
-            <div class="cidade-group">
-                <span class="cidade-titulo">${cidade}</span>
-                ${agrupadoPorCidade[cidade].map((d, index) => `
-                    <div class="item-destino card">
-                        <span><strong>${d.nome}</strong> - R$ ${d.preco}</span>
-                        <button class="btn-delete" onclick="deletarDestino('${d.nome}')">Excluir</button>
-                    </div>
-                `).join('')}
+    for (let cidade in agrupado) {
+        let secaoCidade = document.createElement('section');
+        secaoCidade.className = 'cidade-group';
+        
+        let htmlDestinos = agrupado[cidade].map((d, i) => `
+            <div class="item-destino card">
+                <span><strong>${d.nome}</strong> - R$ ${d.preco}</span>
+                <button class="btn-delete" onclick="deletarDestino(${destinos.indexOf(d)})">Excluir</button>
             </div>
+        `).join('');
+
+        secaoCidade.innerHTML = `
+            <span class="cidade-titulo">${cidade}</span>
+            ${htmlDestinos}
         `;
-        container.innerHTML += htmlCidade;
+        container.appendChild(secaoCidade);
     }
 }
 
-function deletarDestino(nomeDestino) {
-    destinos = destinos.filter(d => d.nome !== nomeDestino);
-    localStorage.setItem('meusDestinos', JSON.stringify(destinos));
-    renderizarLista();
-}
-
+// Inicializa a lista ao abrir a página
 renderizarLista();
